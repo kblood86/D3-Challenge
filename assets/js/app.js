@@ -63,7 +63,7 @@ d3.csv("assets/data/data.csv").then(function(censusData) {
         .call(leftAxis);
 
     //Create circles
-    chartGroup.selectAll("circle")
+    var circlesGroup = chartGroup.selectAll("circle")
         .data(censusData)
         .enter()
         .append("circle")
@@ -89,6 +89,26 @@ d3.csv("assets/data/data.csv").then(function(censusData) {
         
 
     //tool tip
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html(function(d) {
+        return (`${d.state}<br>Median Age: ${d.age}<br>Smokes (%): ${d.smokes}`);
+      });
+
+      // Step 7: Create tooltip in the chart
+      // ==============================
+      chartGroup.call(toolTip);
+  
+      // Step 8: Create event listeners to display and hide the tooltip
+      // ==============================
+      circlesGroup.on("click", function(data) {
+        toolTip.show(data, this);
+      })
+        // onmouseout event
+        .on("mouseout", function(data, index) {
+          toolTip.hide(data);
+        });  
 
     //axes labels
         chartGroup.append("text")
