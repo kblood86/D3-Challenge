@@ -1,5 +1,5 @@
 # Health Risks
-## D3-Challenge
+
 
 ![photo-1558327664-f055f92a0937](https://user-images.githubusercontent.com/77282780/126245195-0b7232a1-3e7b-482c-94c2-45ab794a0b16.jpeg)
 
